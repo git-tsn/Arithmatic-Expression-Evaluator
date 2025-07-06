@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Arithmetic Expression Evaluator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-calculator"></i>
+                    Mini Arithmetic Expression Evaluator
+                </h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="input-header">
+                    <h2><i class="fas fa-code"></i> Input C/C++ Code</h2>
+                    <div class="input-controls">
+                        <button id="clearBtn" class="btn btn-secondary">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                        <button id="exampleBtn" class="btn btn-primary">
+                            <i class="fas fa-lightbulb"></i> Load Example
+                        </button>
+                        <button id="errorExampleBtn" class="btn btn-warning">
+                            <i class="fas fa-bug"></i> Test Errors
+                        </button>
+                        <button id="evaluateBtn" class="btn btn-success">
+                            <i class="fas fa-play"></i> Evaluate
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="code-editor">
+                    <textarea id="codeInput" placeholder="Enter your C/C++ code here...
+Example:
+int a = 5;
+int b = 10;
+float f = 2.5;
+double d = 3.1415;
+string s = &quot;Hello&quot;;
+char c = 'A';
+int sum = a + b;
+float product = f * a;
+double total = d + f + b;
+string greet = s + &quot; World&quot;;
+cout << sum << endl;
+cout << product << endl;
+cout << total << endl;
+cout << greet << endl;"></textarea>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+                    <div class="progress-bar">
+                        <div class="progress-step active" data-step="1">
+                            <i class="fas fa-search"></i>
+                            <span>Lexical</span>
+                        </div>
+                        <div class="progress-step" data-step="2">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Parsing</span>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <i class="fas fa-calculator"></i>
+                            <span>Evaluation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-content">
+                    <div class="result-tab active" id="lexicalTab">
+                        <h3><i class="fas fa-search"></i> Lexical Analysis</h3>
+                        <div class="table-container">
+                            <table class="result-table">
+                                <thead>
+                                    <tr>
+                                        <th>Input Expression</th>
+                                        <th>Token Name</th>
+                                        <th>Line</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lexicalTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="result-tab" id="parsingTab">
+                        <h3><i class="fas fa-sitemap"></i> Parsing & Postfix Conversion</h3>
+                        <div class="parsing-content">
+                            <div class="expression-box">
+                                <h4>Infix Expression</h4>
+                                <div class="expression-display" id="infixExpression"></div>
+                            </div>
+                            <div class="expression-box">
+                                <h4>Postfix Expression</h4>
+                                <div class="expression-display" id="postfixExpression"></div>
+                            </div>
+                            <div class="variables-box">
+                                <h4>Variables</h4>
+                                <div class="variables-table" id="variablesTable"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-tab" id="evaluationTab">
+                        <h3><i class="fas fa-calculator"></i> Expression Evaluation</h3>
+                        <div class="evaluation-content">
+                            <div class="result-box">
+                                <h4>Final Result</h4>
+                                <div class="result-display" id="finalResult"></div>
+                            </div>
+                            <div class="steps-box">
+                                <h4>Evaluation Steps</h4>
+                                <div class="steps-display" id="evaluationSteps"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="lexicalTab">
+                        <i class="fas fa-search"></i> Lexical Analysis
+                    </button>
+                    <button class="tab-btn" data-tab="parsingTab">
+                        <i class="fas fa-sitemap"></i> Parsing
+                    </button>
+                    <button class="tab-btn" data-tab="evaluationTab">
+                        <i class="fas fa-calculator"></i> Evaluation
+                    </button>
+                </div>
+            </div>
+
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-spinner">
+                    <i class="fas fa-cog fa-spin"></i>
+                </div>
+                <p>Analyzing your code...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Mini Arithmetic Expression Evaluator, All rights reserved</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
